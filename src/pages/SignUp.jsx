@@ -1,104 +1,96 @@
+import { Box, Container, Typography, TextField, Button } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import React from "react";
-import Button from "@mui/material/Button";
-import { Typography, TextField, Box, Container, Stack } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Link } from "react-router-dom";
 
 function SignUp() {
+  const theme = useTheme();
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
-    <Box>
+    <Box
+      sx={{
+        minHeight: "calc(100vh - 10.25rem)",
+        pt: mobile ? 10 : 12,
+      }}
+    >
       <Container maxWidth="sm">
-        <Stack
-          justifyContent="center"
-          alignItems="center"
-          sx={{ height: "100vh" }}
-        >
+        <Box>
+          <Typography variant="h5" sx={{ mb: 1 }}>
+            Personal Information
+          </Typography>
           <Box component="form">
-            <Stack
-              justifyContent="center"
-              alignItems="center"
-              spacing={1}
-              sx={{ mb: 3.5 }}
-            >
-              <AccountCircleIcon
-                sx={{ fontSize: "3.5rem", color: "#536DFE" }}
-              ></AccountCircleIcon>
-              <Typography
-                gutterBottom
-                variant="h4"
-                sx={{ color: "#536DFE", fontWeight: "semi-bold" }}
-              >
-                Sign Up
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{ mb: 1 }}
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-              spacing={1}
-            >
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="First Name"
-                variant="outlined"
-                type="text"
-              />
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Last Name"
-                variant="outlined"
-                type="text"
-              />
-            </Stack>
             <TextField
-              fullWidth
+              variant="outlined"
+              label="First Name"
               margin="normal"
-              id="outlined-basic"
+              fullWidth
+              required
+            />
+            <TextField
+              variant="outlined"
+              label="Middle Name"
+              margin="normal"
+              fullWidth
+              required
+            />
+            <TextField
+              variant="outlined"
+              label="Last Name"
+              margin="normal"
+              fullWidth
+              required
+            />
+            <TextField
+              type="date"
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              required
+            />
+            <Typography variant="h5" sx={{ mt: 3, mb: 1 }}>
+              Sign In Information
+            </Typography>
+            <TextField
+              variant="outlined"
               label="Email"
-              variant="outlined"
-              type="email"
+              margin="normal"
+              fullWidth
+              required
             />
             <TextField
-              fullWidth
-              margin="normal"
-              id="outlined-basic"
+              variant="outlined"
               label="Username"
-              variant="outlined"
-              type="text"
+              margin="normal"
+              fullWidth
+              required
             />
             <TextField
-              fullWidth
-              margin="normal"
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
               type="password"
+              variant="outlined"
+              label="First Name"
+              margin="normal"
+              fullWidth
+              required
             />
             <TextField
-              fullWidth
-              margin="normal"
-              id="outlined-basic"
+              type="password"
+              variant="outlined"
               label="Confirm Password"
-              variant="outlined"
-              type="password"
+              margin="normal"
+              fullWidth
+              required
             />
             <Button
-              fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, py: 1.5 }}
+              fullWidth
+              sx={{ py: 1.5, mt: 3, mb: 4 }}
             >
-              Register
+              Submit
             </Button>
-            <Stack direction="row" justifyContent="flex-end">
-              <Link to="/signIn" sx={{ textAlign: "right" }}>
-                Already have an account?
-              </Link>
-            </Stack>
           </Box>
-        </Stack>
+        </Box>
       </Container>
     </Box>
   );

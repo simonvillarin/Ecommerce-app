@@ -1,82 +1,85 @@
-import React from "react";
-import Navbar1 from "../components/Navbar1";
-import Box from "@mui/material/Box";
-import Footer from "../components/Footer";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import SignInImg from "../assets/images/signIn.png";
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import signIn from "../assets/images/signIn.png";
 import { Link } from "react-router-dom";
-
-const style = {
-  minHeight: "100vh",
-  display: "grid",
-  gridTemplateRows: "auto 1fr auto",
-};
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import React from "react";
 
 function SignIn() {
+  const theme = useTheme();
+  const tablet = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
-    <Box sx={style}>
-      <Navbar1 />
-      <Container sx={{ py: 3 }}>
-        <Grid
-          container
+    <Box>
+      <Container>
+        <Stack
+          direction="row"
           justifyContent="center"
           alignItems="center"
-          spacing={4}
-          sx={{ height: "100%" }}
+          sx={{
+            minHeight: "calc(100vh - 10.25rem)",
+            gap: !tablet && 6,
+          }}
         >
-          <Grid item xs={12} md={7}>
-            <img
-              src={SignInImg}
-              alt="Sign In"
-              sx={{ display: { sm: "none" } }}
-            />
-          </Grid>
-          <Grid item xs={12} md={5}>
-            <Box>
-              <Typography variant="h5">Sign In</Typography>
-              <Box component="form" sx={{ mt: 1 }}>
-                <TextField
-                  label="Username"
-                  margin="normal"
-                  fullWidth
-                  required
-                  autoFocus
-                />
-                <TextField
-                  label="Password"
-                  type="password"
-                  margin="normal"
-                  fullWidth
-                  required
-                  autoFocus
-                />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  fullWidth
-                  sx={{ py: 1.5, mt: 3, mb: 2 }}
-                >
-                  Sign In
-                </Button>
-              </Box>
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
+          <img
+            src={signIn}
+            alt="Sign In"
+            style={{ display: tablet ? "none" : "flex" }}
+          />
+          <Box>
+            <Typography variant="h5" sx={{ mb: 1 }}>
+              Sign In
+            </Typography>
+            <Box component="form">
+              <TextField
+                variant="outlined"
+                label="Username"
+                margin="normal"
+                fullWidth
+                required
+              />
+              <TextField
+                type="password"
+                variant="outlined"
+                label="Password"
+                margin="normal"
+                fullWidth
+                required
+              />
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{ py: 1.5, mt: 3, mb: 2 }}
               >
-                <Link to="/forgot">Forgot Password?</Link>
-                <Link to="/signUp">Don't you have an account? Sign Up</Link>
-              </Stack>
+                Sign In
+              </Button>
             </Box>
-          </Grid>
-        </Grid>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Typography variant="body2">
+                <Link to="/forgot" style={{ textDecoration: "none" }}>
+                  Forgot Password?
+                </Link>
+              </Typography>
+              <Typography variant="body2">
+                <Link to="/signIn" style={{ textDecoration: "none" }}>
+                  Don't have an account? Sign Up
+                </Link>
+              </Typography>
+            </Stack>
+          </Box>
+        </Stack>
       </Container>
-      <Footer />
     </Box>
   );
 }

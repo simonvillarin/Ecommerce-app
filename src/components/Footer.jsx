@@ -7,9 +7,9 @@ import Typography from "@mui/material/Typography";
 function Footer() {
   return (
     <Box sx={{ py: 1, background: "#536DFE", color: "#fff" }}>
-      <Container maxWidth="lg">
+      <Container>
         <Stack direction="row" justifyContent="center" alignItems="center">
-          <Typography sx={{ textAlign: "center" }}>
+          <Typography variant="body2" sx={{ textAlign: "center" }}>
             All Rights Reserved. © Simon James Villarin, Mark Denver Perez,
             Matthew Adaro.
           </Typography>
