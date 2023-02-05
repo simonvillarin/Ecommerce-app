@@ -7,7 +7,7 @@ import StoreIcon from "@mui/icons-material/Store";
 
 function Navbar1() {
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="lg">
         <Toolbar>
           <StoreIcon fontSize="large" sx={{ mr: 1 }} />

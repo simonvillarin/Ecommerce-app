@@ -10,8 +10,32 @@ import Orders from "./pages/Orders";
 import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/ForgotPassword";
 import Error from "./pages/Error";
+import { useEffect, useState } from "react";
+import Card from "./components/Card";
+import Navbar from "./components/Navbar1";
+import Pagination from "./components/Pagination";
 
 function App() {
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    const res = await fetch("https://fakestoreapi.com/products");
+    const data = await res.json();
+    setProducts(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(8);
+
+  const lastPostIndex = currentPage * postPerPage;
+  const firstPostIndex = lastPostIndex - postPerPage;
+  const currentPosts = products.slice(firstPostIndex, lastPostIndex);
+
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -27,6 +51,14 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
+      <Navbar />
+      <Card products={currentPosts} />
+      <Pagination
+        totalPosts={products.length}
+        postPerPage={postPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </ThemeProvider>
   );
 }
