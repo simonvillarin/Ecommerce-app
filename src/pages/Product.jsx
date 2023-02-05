@@ -13,6 +13,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { SlBasket } from "react-icons/sl";
+import { HiPlus, HiMinus } from "react-icons/hi";
 
 const cartStyle = {
   width: "16rem",
@@ -23,6 +24,7 @@ const cartStyle = {
   border: "2px solid #536DFE",
   borderRadius: ".25rem",
   cursor: "pointer",
+  userSelect: "none",
 
   ":hover": {
     transform: "scale(0.99)",
@@ -35,6 +37,7 @@ function Product() {
   const [isColor, setIsColor] = useState(false);
   const [preview, setPreview] = useState("");
   const [size, setSize] = useState("Medium");
+  const [quantity, setQuantity] = useState(1);
 
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -48,6 +51,7 @@ function Product() {
     border: size === "Small" ? "2px solid #536DFE" : "2px solid #e1e1e1",
     borderRadius: ".25rem",
     cursor: "pointer",
+    userSelect: "none",
   };
 
   const btnStyle2 = {
@@ -59,6 +63,7 @@ function Product() {
     border: size === "Medium" ? "2px solid #536DFE" : "2px solid #e1e1e1",
     borderRadius: ".25rem",
     cursor: "pointer",
+    userSelect: "none",
   };
 
   const btnStyle3 = {
@@ -70,6 +75,7 @@ function Product() {
     border: size === "Large" ? "2px solid #536DFE" : "2px solid #e1e1e1",
     borderRadius: ".25rem",
     cursor: "pointer",
+    userSelect: "none",
   };
 
   const btnStyle4 = {
@@ -81,6 +87,7 @@ function Product() {
     border: size === "Extra Large" ? "2px solid #536DFE" : "2px solid #e1e1e1",
     borderRadius: ".25rem",
     cursor: "pointer",
+    userSelect: "none",
   };
 
   const btnStyle5 = {
@@ -93,6 +100,7 @@ function Product() {
       size === "Extra Extra Large" ? "2px solid #536DFE" : "2px solid #e1e1e1",
     borderRadius: ".25rem",
     cursor: "pointer",
+    userSelect: "none",
   };
 
   const btnStyle6 = {
@@ -107,6 +115,7 @@ function Product() {
         : "2px solid #e1e1e1",
     borderRadius: ".25rem",
     cursor: "pointer",
+    userSelect: "none",
   };
 
   let params = useParams();
@@ -136,6 +145,18 @@ function Product() {
 
   const handleSizeChange = (newSize) => {
     setSize(newSize);
+  };
+
+  const handleAddQuantity = (totalQty) => {
+    if (quantity <= totalQty) {
+      setQuantity((prev) => prev + 1);
+    }
+  };
+
+  const handleSubtractQuantity = () => {
+    if (quantity > 0) {
+      setQuantity((prev) => prev - 1);
+    }
   };
 
   useEffect(() => {
@@ -202,7 +223,7 @@ function Product() {
                 <Stack
                   direction="row"
                   alignItems="center"
-                  sx={{ mt: 2, mb: 5, flexWrap: "wrap", gap: 2 }}
+                  sx={{ mt: 2, mb: 3, flexWrap: "wrap", gap: 2 }}
                 >
                   <Box sx={btnStyle1} onClick={() => handleSizeChange("Small")}>
                     S
@@ -233,6 +254,23 @@ function Product() {
                     onClick={() => handleSizeChange("Extra Extra Extra Large")}
                   >
                     XXXL
+                  </Box>
+                </Stack>
+                <Typography>Quantity</Typography>
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  sx={{ mt: 2, mb: 4 }}
+                >
+                  <Box class="btnMinus" onClick={handleSubtractQuantity}>
+                    <HiMinus className="iconQty" />
+                  </Box>
+                  <Box class="qty">{quantity}</Box>
+                  <Box
+                    class="btnAdd"
+                    onClick={() => handleAddQuantity(clothe.quantity)}
+                  >
+                    <HiPlus className="iconQty" />
                   </Box>
                 </Stack>
                 <Stack direction="row" alignItems="center" spacing={2}>
