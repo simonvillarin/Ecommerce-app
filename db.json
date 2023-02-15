@@ -1,7 +1,30 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" },
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "accounts": [
+    {
+      "username": "userMark",
+      "password": "12345",
+      "email": "mark@email.com",
+      "firstname": "Mark",
+      "middlename": "Carino",
+      "lastname": "Perez",
+      "birthday": "2000-12-23",
+      "id": 1
+    }
+  ],
   "all": [
     {
       "id": 3,
@@ -761,7 +784,10 @@
       "price": "₱ 2687.00",
       "quantity": 1000,
       "preview": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F76%2F8e%2F768e893221b225f471e44dc5df0c6863a44d6cbc.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
-      "images": [{}, {}],
+      "images": [
+        {},
+        {}
+      ],
       "colors": [
         {
           "color": "Cream",
@@ -783,7 +809,10 @@
       "price": "₱ 1612.00",
       "quantity": 1000,
       "preview": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F4a%2F8c%2F4a8c6f1ab0ed1faaff64dbc6a237006b99bcf6b2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
-      "images": [{}, {}],
+      "images": [
+        {},
+        {}
+      ],
       "colors": [
         {
           "color": "Orange/cream striped",
@@ -1030,7 +1059,10 @@
       "price": "₱ 3225.00",
       "quantity": 1000,
       "preview": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F22%2Fa0%2F22a050f1448245f815bd4725c3272398ba563b06.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
-      "images": [{}, {}],
+      "images": [
+        {},
+        {}
+      ],
       "colors": [
         {
           "color": "Cream/black",

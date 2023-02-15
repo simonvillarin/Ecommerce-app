@@ -45,7 +45,7 @@ function Navbar() {
       navigate("/profile");
     } else if (page === "Sign Up") {
       navigate("/signUp");
-    } else {
+    } else if (page === "Sign In") {
       navigate("/signIn");
     }
   };

@@ -15,29 +15,32 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Error from "./pages/Error";
 import Offers from "./components/Offers";
 import Footer from "./components/Footer";
+import { AuthProvider } from "./context/AuthProvider";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/products/:category" element={<Products />} />
-          <Route path="/product/:category/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/forgot" element={<ForgotPassword />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-        <Offers />
-        <Footer />
-      </Router>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/products/:category" element={<Products />} />
+            <Route path="/product/:category/:id" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/forgot" element={<ForgotPassword />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+          <Offers />
+          <Footer />
+        </Router>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
